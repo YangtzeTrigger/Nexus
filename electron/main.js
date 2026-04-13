@@ -1,8 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
-const isDev = process.env.NODE_ENV !== 'production'
-
 function createWindow() {
   const win = new BrowserWindow({
     width: 1400,
@@ -17,8 +15,12 @@ function createWindow() {
     },
   })
 
-  if (isDev) {
+  // app.isPackaged is false when running via `electron .` or `npm run dev`,
+  // and true only when distributed via electron-builder or similar.
+  // This is more reliable than checking NODE_ENV.
+  if (!app.isPackaged) {
     win.loadURL('http://localhost:5173')
+    win.webContents.openDevTools({ mode: 'detach' })
   } else {
     win.loadFile(path.join(__dirname, '../dist/index.html'))
   }
