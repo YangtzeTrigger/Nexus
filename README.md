@@ -1,115 +1,82 @@
 # Nexus
 
-**A private, governed multi-agent command centre built on OpenClaw.**
+Nexus Phase 1 is a private, governed command centre designed to coordinate OpenClaw as its runtime and execution layer.
 
-Nexus is not a general-purpose AI wrapper. It is a structured command centre that coordinates specialist AI agents through a defined governance architecture — with visible routing, approval checkpoints, full run traceability, and deliberate output management.
+## What this project is for
 
------
+Phase 1 is not the full ecosystem. It is the effort to prove a clean, inspectable spine first:
 
-## What Nexus Does
+- Nexus as the command surface and governance layer
+- OpenClaw as the bounded runtime
+- Workflow 1 as the first trustworthy proof path
+- visible task/run state, trace history, and approval-stop capability
 
-Nexus receives tasks, governs how they are handled, and returns trustworthy structured outputs. Every task passes through a defined workflow path:
+## Current build focus
 
-```
-Governor → Librarian → Artisan → Auditor → Governor
-```
+The immediate target is the first trustworthy proof of **Workflow 1 — Research Coordination**:
 
-|Role         |Responsibility                                                     |
-|-------------|-------------------------------------------------------------------|
-|**Governor** |Classifies the task, routes it, makes the final acceptance decision|
-|**Librarian**|Researches and structures findings                                 |
-|**Artisan**  |Produces the output document                                       |
-|**Auditor**  |Verifies output against the original success criteria              |
+**Task Intake → Conductor Classification → Research Specialist → Writing and Structuring Specialist → Conductor Review → Final Output**
 
-Every run produces nine canonical events from `task_created` to `task_completed`. Nothing meaningful happens silently.
+Optional strengthening behaviors:
+- deliberate output save
+- simple approval pause when consequence appears
 
------
+## Start here
 
-## Core Design Principle
+If you are re-entering the project quickly, open these first:
 
-> **Can Nexus clearly govern what it already does?**
+1. `resources/templates/Nexus_Phase1_Project_Status_Dashboard_Template_v1.md`
+2. `resources/implementation/Nexus_Phase1_Quick_Start_Implementation_Brief_v1.md`
+3. `resources/implementation/Nexus_Phase1_Build_Sequence_Taskboard_v1.md`
+4. `resources/implementation/Nexus_Phase1_First_Implementation_Sprint_Plan_v1.md`
+5. `resources/implementation/Nexus_Phase1_Minimum_Buildable_Slice_v1.md`
 
-Phase 1 prioritises:
+## Most important folders
 
-- Visibility over feature sprawl
-- Control over expansion
-- Governance over novelty
-- Foundation before operation
+- `resources/blueprints/` — core architecture and scope
+- `resources/governance/` — routing, approval, trace, state language
+- `resources/workflows/` — workflow definitions and first-run test
+- `resources/dashboard/` — UI and field-binding contracts
+- `resources/integrations/` — Nexus ↔ OpenClaw boundary
+- `resources/implementation/` — build execution, proof, review, milestones
+- `resources/templates/` — live control and logging templates
+- `resources/references/` — glossary, index, one-page map, root-reference copies
 
------
+## Suggested always-open set during active build
 
-## Architecture
+- `resources/implementation/Nexus_Phase1_Quick_Start_Implementation_Brief_v1.md`
+- `resources/implementation/Nexus_Phase1_Minimum_Buildable_Slice_v1.md`
+- `resources/implementation/Nexus_Phase1_First_Implementation_Sprint_Plan_v1.md`
+- `resources/implementation/Nexus_Phase1_Build_Sequence_Taskboard_v1.md`
+- `resources/governance/Nexus_Phase1_Task_and_Run_State_Dictionary_v1.md`
+- `resources/dashboard/Nexus_Phase1_UI_Field_Binding_and_Data_Contract_v1.md`
+- `resources/implementation/Nexus_Phase1_Component_Map_and_Implementation_Ownership_v1.md`
+- `resources/workflows/Nexus_Phase1_Workflow1_Research_Coordination_Spec_v1.md`
+- `resources/integrations/Nexus_Phase1_OpenClaw_Runtime_Integration_Spec_v1.md`
+- `resources/governance/Nexus_Phase1_Event_Types_and_Run_Log_Schema_v1.md`
 
-```
-Nexus UI Shell (Electron + React)
-    └── Harmonic Command Design System
-    └── State Stores: taskStore, runEventStore, configStore, resourceStore
+## Current do-not-drift rules
 
-Conductor Controller
-    └── Task classification (Classes A–E)
-    └── Routing decisions
-    └── Approval gate
+Do not widen into Workflow 2 or broader ecosystem work until the first proof is genuinely trustworthy and stable.
 
-OpenClaw Runtime (via Handoff Adapter)
-    └── Anthropic: Claude Sonnet 4
-    └── OpenAI: GPT-4o (selectable)
+Do not:
+- activate extra roles too early
+- let OpenClaw become the hidden truth of the system
+- overbuild memory before save discipline is real
+- let UI polish outrun workflow truth
+- count placeholder behavior as done
 
-Specialist Agents (Phase 1 active)
-    └── Governor (Conductor)
-    └── Librarian (Research Specialist)
-    └── Artisan (Writing & Structuring Specialist)
-    └── Auditor (Verification Specialist)
-```
+## Current safe interpretation
 
------
+- Foundation locked = reached
+- Minimum slice assembled = in progress
+- First end-to-end Workflow 1 run = next major build threshold
+- Trustworthy first proof = not yet assumed unless real implementation evidence says so
 
-## Tech Stack
+## Library navigation
 
-- **Frontend:** Electron + React
-- **Design System:** Harmonic Command (Obsidian surfaces, Nexus Cyan, Violet Blue, Amber, Emerald)
-- **State:** Zustand stores
-- **Runtime:** OpenClaw
-- **LLM Providers:** Anthropic API (Claude Sonnet 4) / OpenAI API (GPT-4o)
-- **Package Manager:** npm
+For the full library map and reading order, open:
 
------
-
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Launch Nexus
-npm run dev
-```
-
-Project workspace: `C:\Users\jason\.openclaw\workspace\nexus`
-
------
-
-## Project Status
-
-|Milestone                                  |Status    |
-|-------------------------------------------|----------|
-|M1 — Foundation Locked (33 governance docs)|✅ Complete|
-|M2 — Minimum Slice Assembled               |🔄 Active  |
-|M3 — First End-to-End Workflow 1 Run       |⏳ Pending |
-|M4 — Trustworthy First Proof               |⏳ Pending |
-|M5 — Post-Proof Stabilisation              |⏳ Pending |
-|M6 — Workflow 2 Readiness                  |⏳ Pending |
-|M7 — Controlled Workflow 2 Activation      |⏳ Pending |
-|M8 — Phase 1 Stable / Phase 2 Planning     |⏳ Pending |
-
------
-
-## Governance Documents
-
-33 governance documents define the full Phase 1 architecture. These cover constitutional blueprints, agent roles, routing rules, policy and approval types, event schemas, memory and state model, dashboard information architecture, OpenClaw runtime integration, resource taxonomy, sprint plan, risk register, and more. They are the canonical source of truth for all build decisions.
-
------
-
-## Owner
-
-Jason Mercer — Independent Researcher  
-Extended Unified Theory (EUT) / Nexus Command Centre
+- `resources/references/Nexus_Phase1_Document_Index_and_Reading_Order_v1.md`
+- `resources/references/Nexus_Phase1_Architecture_One_Page_Map_v1.md`
+- `resources/references/Nexus_Phase1_Glossary_and_Terms_v1.md`
